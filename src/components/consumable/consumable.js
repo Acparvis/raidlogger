@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class Consumable extends Component {
     render() {
         const data = this.props;
+
         return (
             <div>
                 <p>{data?.data?.name}</p>
@@ -14,6 +15,10 @@ class Consumable extends Component {
                 <label>
                     Price per unit (g)
                     <input type="number" value={data?.data?.numberPerRaid}/>
+                </label>
+                <label>
+                    Price per raid
+                    { Math.round(data?.data?.expectedPrice * data?.data?.numberPerRaid) }
                 </label>
             </div>
         );
