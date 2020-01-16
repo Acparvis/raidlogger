@@ -10,6 +10,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 
 // const store = createStore(state, composeEnhancers(applyMiddleware(thunk)));
+
+
 const store = createStore(state, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(

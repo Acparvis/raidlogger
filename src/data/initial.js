@@ -1,4 +1,3 @@
-import {Map, List} from "immutable";
 
 // Initial state, once a player has entered their info will be overwritten.
 export default {

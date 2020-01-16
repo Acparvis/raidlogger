@@ -4,11 +4,34 @@ import { //Imports the actions to be fed into the reducer switch statement.
     UPDATE_CONSUMABLE
 } from "./actions/state";
 
-// const updateConsumable = (state, {value}) => state.update('consumables', c => {
-//     return c.push(Map({ value }))
-// });
 
-const updateConsumable = (state, {value}) => console.log({ state, value });
+const updateConsumable = (state, {value}) => {
+
+    //retrieves consumable by index then updates into new state object
+    let consumables = state.consumables;
+
+    let consumable = consumables[value.index];
+
+    consumable.numberPerRaid = +value.quantity;
+    consumable.expectedPrice = +value.price;
+
+    let updatedConsumables = consumables.map((con, index) => {
+        if (index === value.index) {
+            con.numberPerRaid = +value.quantity;
+            con.expectedPrice = +value.price;
+        }
+
+        return con;
+    })
+
+    return {
+        ...state,
+        consumables : [
+            ...updatedConsumables
+        ]
+    }
+
+}
 
 // Reducer switch statement.
 export default(state = initial, action) => {

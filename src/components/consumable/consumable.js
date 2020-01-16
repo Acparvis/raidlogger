@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import { updateConsumable } from "../../data/actions/state";
 
 const mapStateToProps = state => {
-    return {};
+    const {consumables} = state;
+
+    return {
+        consumables: consumables
+    };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -32,7 +36,6 @@ class Consumable extends Component {
                     { Math.round(data?.expectedPrice * data?.numberPerRaid) }
                 </label>
 
-                {JSON.stringify(data)}
             </div>
         );
     }
