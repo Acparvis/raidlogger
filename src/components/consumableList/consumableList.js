@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Consumable from "../consumable/consumable";
 
 const mapStateToProps = state => {
-    let consumables = state.get("consumables");
+    let consumables = state.consumables;
 
     return {
         consumables: consumables,
@@ -20,7 +20,7 @@ class ConsumableList extends Component {
             <div>
                 {JSON.stringify(consumables)}
 
-                {consumables.map((consumable) => <Consumable data={consumable}/>)}
+                {consumables.map((consumable, index) => <Consumable data={consumable} index={index}/>)}
             </div>
         );
     }

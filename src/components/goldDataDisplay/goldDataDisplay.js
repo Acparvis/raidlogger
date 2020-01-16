@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
-    let raidsPerWeek = state.get("raidsPerWeek");
-    let consumables = state.get("consumables");
+    let raidsPerWeek = state.raidsPerWeek;
+    let consumables = state.consumables;
 
     return {
         raidsPerWeek: raidsPerWeek,
