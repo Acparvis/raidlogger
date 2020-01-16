@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 const mapStateToProps = state => {
-    const {consumables} = state;
+    const {consumables, raidsPerWeek} = state;
 
     return {
-        consumables: consumables
+        consumables: consumables,
+        raidsPerWeek: raidsPerWeek
     };
 };
 
 class MonthShopping extends Component {
     getMonthlyList = () => {
-        const {consumables, month} = this.props;
+        const {consumables, month, raidsPerWeek} = this.props;
 
 
 
         let results = [];
 
-        consumables.map((con) => results.push({ name: con.name, number: (con.numberPerRaid * month )}))
+        consumables.map((con) => results.push({ name: con.name, number: (con.numberPerRaid * month * 4 * raidsPerWeek)}))
 
         console.log(results);
         return results;

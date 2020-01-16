@@ -34,14 +34,11 @@ class GoldDataDisplay extends Component {
 
         return (
             <div>
-                Gold data goes here
+                <p>Gold per raid: {this.pricePerRaid()}</p>
 
-                <p>Price per raid: {this.pricePerRaid()}</p>
-
-                <p>Price per week: {this.pricePerRaid() * raidsPerWeek }</p>
+                <p>Gold per week: {this.pricePerRaid() * raidsPerWeek }</p>
 
                 <p>Gold Per Month: {this.pricePerRaid() * raidsPerWeek * 4}</p>
-
             </div>
         );
     }

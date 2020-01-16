@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
-import { updateConsumable } from "../../data/actions/state";
+import {deleteConsumable, updateConsumable} from "../../data/actions/state";
 
 const mapStateToProps = state => {
     const {consumables} = state;
@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    consumableUpdate: (price, quantity, index, stock) => dispatch(updateConsumable({price, quantity, index, stock}))
+    consumableUpdate: (price, quantity, index, stock) => dispatch(updateConsumable({price, quantity, index, stock})),
+    consumableDelete: (id) => dispatch(deleteConsumable(id))
 });
 
 class Consumable extends Component {
@@ -21,7 +22,7 @@ class Consumable extends Component {
     render() {
         const { data, index } = this.props;
 
-        const { numberPerRaid, expectedPrice, currentStock} = this.props.data;
+        const { numberPerRaid, expectedPrice, currentStock, id} = this.props.data;
 
         return (
             <div>
@@ -42,6 +43,7 @@ class Consumable extends Component {
                     Price per raid
                     { Math.round(data?.expectedPrice * data?.numberPerRaid) }
                 </label>
+                <button onClick={() => this.props.consumableDelete(id)}>delete</button>
 
             </div>
         );
