@@ -6,17 +6,29 @@ import * as serviceWorker from './serviceWorker';
 
 import state from "./data/reducers";
 
-import { createStore, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
+import {createStore, applyMiddleware, compose} from "redux";
+import {Provider} from "react-redux";
+import {persistStore, persistReducer} from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import {PersistGate} from 'redux-persist/integration/react'
 
 // const store = createStore(state, composeEnhancers(applyMiddleware(thunk)));
 
+const persistConfig = {
+    key: 'root',
+    storage,
+}
 
-const store = createStore(state, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const persistedReducer = persistReducer(persistConfig, state);
+
+let store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let persistor = persistStore(store);
 
 ReactDOM.render(
-    <Provider store={ store }>
-    <App />
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <App/>
+        </PersistGate>
     </Provider>,
     document.getElementById('root')
 );

@@ -25,7 +25,7 @@ class Consumable extends Component {
         const { numberPerRaid, expectedPrice, currentStock, id} = this.props.data;
 
         return (
-            <div>
+            <div className="consumable-card">
                 <p>{data?.name}</p>
                 <label>
                     Number per raid
