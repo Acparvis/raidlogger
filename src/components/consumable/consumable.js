@@ -13,24 +13,31 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    consumableUpdate: (price, quantity, index) => dispatch(updateConsumable({price, quantity, index}))
+    consumableUpdate: (price, quantity, index, stock) => dispatch(updateConsumable({price, quantity, index, stock}))
 });
 
 class Consumable extends Component {
+
     render() {
         const { data, index } = this.props;
+
+        const { numberPerRaid, expectedPrice, currentStock} = this.props.data;
 
         return (
             <div>
                 <p>{data?.name}</p>
                 <label>
                     Number per raid
-                    <input type="number" value={data?.expectedPrice} onChange={(e) => this.props.consumableUpdate(e.target.value, data?.numberPerRaid, index)}/>
+                    <input type="number" value={data?.numberPerRaid} onChange={(e) => this.props.consumableUpdate(data?.expectedPrice, e.target.value, index, currentStock)}/>
                 </label>
                 <label>
                     Price per unit (g)
-                    <input type="number" value={data?.numberPerRaid} onChange={(e) => this.props.consumableUpdate(data?.expectedPrice, e.target.value, index)}/>
+                    <input type="number" value={data?.expectedPrice} onChange={(e) => this.props.consumableUpdate(e.target.value, data?.numberPerRaid, index, currentStock)}/>
                 </label>
+                {/*<label>*/}
+                {/*    Current Stock*/}
+                {/*    <input type="number" value={currentStock} onChange={(e) => this.props.consumableUpdate(data?.expectedPrice, numberPerRaid, index, e.target.value)}/>*/}
+                {/*</label>*/}
                 <label>
                     Price per raid
                     { Math.round(data?.expectedPrice * data?.numberPerRaid) }

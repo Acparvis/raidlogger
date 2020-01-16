@@ -26,7 +26,7 @@ class GoldDataDisplay extends Component {
     }
 
     getCost = (total, consumable) => {
-        return total + Math.round(consumable.numberPerRaid * consumable.expectedPrice);
+        return total + Math.round((consumable.numberPerRaid - consumable.currentStock) * consumable.expectedPrice);
     }
 
     render() {

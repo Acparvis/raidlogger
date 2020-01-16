@@ -1,7 +1,7 @@
 import initial from "./initial";
-import {Map, fromJS, toJS} from 'immutable';
 import { //Imports the actions to be fed into the reducer switch statement.
-    UPDATE_CONSUMABLE
+    UPDATE_CONSUMABLE,
+    ADD_CONSUMABLE
 } from "./actions/state";
 
 
@@ -19,6 +19,7 @@ const updateConsumable = (state, {value}) => {
         if (index === value.index) {
             con.numberPerRaid = +value.quantity;
             con.expectedPrice = +value.price;
+            con.currentStock = +value.stock;
         }
 
         return con;
@@ -33,11 +34,23 @@ const updateConsumable = (state, {value}) => {
 
 }
 
+const addConsumable = (state, {value}) => {
+    return {
+        ...state,
+        consumables : [
+            ...state.consumables,
+            { ...value, id: state.consumables.length+1, currentStock: 0 }
+        ]
+    }
+}
+
 // Reducer switch statement.
 export default(state = initial, action) => {
     switch (action.type) {
         case UPDATE_CONSUMABLE:
             return updateConsumable(state, action);
+        case ADD_CONSUMABLE:
+            return addConsumable(state, action);
         default:
             return state;
     }
