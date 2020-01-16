@@ -3,7 +3,7 @@ import MonthShopping from "../monthShopping/monthShopping";
 class ShoppingList extends Component {
     render() {
         return (
-            <div>
+            <div className="shopping-section">
                 <MonthShopping month={1}/>
                 <MonthShopping month={2}/>
                 <MonthShopping month={3}/>

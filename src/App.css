@@ -40,11 +40,42 @@
 .topbar-container {
   display: flex;
   justify-content: space-around;
-  border: solid 1px red;
   margin: 15px;
   padding: 5px;
 }
 
+.list-feed-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 1200px;
+  /*max-height: 50vh;*/
+  margin: auto;
+}
+
 .consumable-card {
-  border: solid 1px blue;
+  -webkit-box-shadow: 0px 0px 20px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 20px 3px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 20px 3px rgba(0,0,0,0.75);
+  max-width: 600px;
+  margin: auto;
+}
+
+.consumable-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.gold-stats {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.shopping-section {
+  //margin-left: 50px;
+  max-width: 1200px;
+  margin: auto;
 }

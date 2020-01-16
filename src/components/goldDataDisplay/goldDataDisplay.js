@@ -33,7 +33,7 @@ class GoldDataDisplay extends Component {
         const {raidsPerWeek} = this.props;
 
         return (
-            <div>
+            <div className="gold-stats">
                 <p>Gold per raid: {this.pricePerRaid()}</p>
 
                 <p>Gold per week: {this.pricePerRaid() * raidsPerWeek }</p>

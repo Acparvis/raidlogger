@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 const mapStateToProps = state => {
     const {consumables, raidsPerWeek} = state;
@@ -15,13 +18,8 @@ class MonthShopping extends Component {
     getMonthlyList = () => {
         const {consumables, month, raidsPerWeek} = this.props;
 
-
-
         let results = [];
-
         consumables.map((con) => results.push({ name: con.name, number: (con.numberPerRaid * month * 4 * raidsPerWeek)}))
-
-        console.log(results);
         return results;
     }
 
@@ -29,22 +27,24 @@ class MonthShopping extends Component {
         const { month } = this.props;
 
         return (
-            <div>
-                <h3>{month} month</h3>
-                <ul>
+            <div className="shopping-month">
+                {/*<h3 style={{textAlign: "left"}}>{month} month</h3>*/}
+                <List >
+                    <ListSubheader>
+                        <h3 style={{ textAlign: "left"}}>{month} month</h3>
+                    </ListSubheader>
                     {this.getMonthlyList().map((item) => {
                         return (
-                            <li>
+                            <ListItem>
                                 {item.name} x {item.number}
-                            </li>
+                            </ListItem>
                         )
                     })}
-                </ul>
+                </List>
             </div>
         );
     }
 }
 
-MonthShopping.propTypes = {};
 
 export default connect(mapStateToProps)(MonthShopping);

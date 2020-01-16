@@ -21,22 +21,25 @@ class ConsumableList extends Component {
 
         return (
             <>
-            <div className="topbar-container">
-                <div>
-                    Raids per week
-                    <input type="number" value={raidsPerWeek} onChange={(e) => this.props.changeRaidNumber(e.target.value)}/>
+                <div className="topbar-container">
+                    <div>
+                        Raids per week
+                        <input type="number" value={raidsPerWeek}
+                               onChange={(e) => this.props.changeRaidNumber(e.target.value)}/>
+                    </div>
+                    <div>
+                        <input
+                            type="text" value={this.state.consumableName}
+                            onChange={(e) => this.setState({consumableName: e.target.value})}
+                        />
+                        <button onClick={() => this.submitNewConsumable()}>Add consumable</button>
+                    </div>
                 </div>
-                <div>
-                <input
-                    type="text" value={this.state.consumableName}
-                    onChange={(e) => this.setState({consumableName: e.target.value})}
-                />
-                <button onClick={() => this.submitNewConsumable()}>Add consumable</button>
+                <div className="list-feed-container">
+                    {consumables.map((consumable, index) => <Consumable key={index + consumable.id} data={consumable}
+                                                                        index={index}/>)}
                 </div>
-            </div>
-                {consumables.map((consumable, index) => <Consumable key={index + consumable.id} data={consumable}
-                                                                    index={index}/>)}
-                </>
+            </>
         );
     }
 }
