@@ -31,35 +31,50 @@ class Consumable extends Component {
         const {numberPerRaid, expectedPrice, currentStock, id} = this.props.data;
 
         return (
-                <Card varaint="outlined" style={{ maxWidth: 345, margin: "15px", width: "100%"}}>
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            {data?.name}
-                        </Typography>
-                        <Typography  color="textSecondary">
-                            <label>
-                                Number per raid
-                                <input type="number" value={data?.numberPerRaid}
-                                       onChange={(e) => this.props.consumableUpdate(data?.expectedPrice, e.target.value, index, currentStock)}/>
-                            </label>
-                        </Typography>
-                        <Typography  color="textSecondary">
-                            <label>
-                                Price per unit (g)
-                                <input type="number" value={data?.expectedPrice}
-                                       onChange={(e) => this.props.consumableUpdate(e.target.value, data?.numberPerRaid, index, currentStock)}/>
-                            </label>
-                        </Typography>
-                        <Typography variant="body2" component="p">
+            <Card varaint="outlined" style={{maxWidth: 345, margin: "15px", width: "100%"}}>
+                <CardContent>
+                    <Typography variant="h5" component="h2">
+                        {data?.name}
+                    </Typography>
+                    <Typography color="textSecondary">
 
-                                Price per raid {Math.round(data?.expectedPrice * data?.numberPerRaid)} g
+                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                            Number per raid
+                        </label>
+                        <input
+                            className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            id="rpw"
+                            type="number"
+                            value={data?.numberPerRaid}
+                            onChange={(e) => this.props.consumableUpdate(data?.expectedPrice, e.target.value, index, currentStock)}
+                        />
 
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small" onClick={() => this.props.consumableDelete(id)}>delete</Button>
-                    </CardActions>
-                </Card>
+                    </Typography>
+                    <Typography color="textSecondary">
+                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                            Gold per unit
+                        </label>
+                        <input
+                            className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            id="rpw"
+                            type="number"
+                            value={data?.expectedPrice}
+                            onChange={(e) => this.props.consumableUpdate(e.target.value, data?.numberPerRaid, index, currentStock)}
+                        />
+                    </Typography>
+
+                    <div
+                        className="inline-flex items-center bg-white leading-none text-teal-600 rounded-full p-2 shadow text-teal text-sm">
+                        <span className="inline-flex px-2">Price per raid</span>
+                        <span
+                            className="inline-flex bg-teal-600 text-white rounded-full h-6 px-3 justify-center items-center">{Math.round(data?.expectedPrice * data?.numberPerRaid)} g</span>
+                    </div>
+
+                </CardContent>
+                <CardActions>
+                    <Button size="small" onClick={() => this.props.consumableDelete(id)}>delete</Button>
+                </CardActions>
+            </Card>
         );
     }
 }

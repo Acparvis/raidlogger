@@ -8,6 +8,7 @@ import ShoppingList from "./components/shoppingList/shoppingList";
 function App() {
   return (
     <div className="App">
+        <h1 className="text-6xl">RaidLogger v0.1</h1>
       <ConsumableList/>
       <GoldDataDisplay/>
       <ShoppingList/>

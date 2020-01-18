@@ -23,16 +23,37 @@ class ConsumableList extends Component {
             <>
                 <div className="topbar-container">
                     <div>
-                        Raids per week
-                        <input type="number" value={raidsPerWeek}
-                               onChange={(e) => this.props.changeRaidNumber(e.target.value)}/>
-                    </div>
-                    <div>
+                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                            Raids per week
+                        </label>
                         <input
-                            type="text" value={this.state.consumableName}
+                            className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            id="rpw"
+                            type="number"
+                            value={raidsPerWeek}
+                            onChange={(e) => this.props.changeRaidNumber(e.target.value)}
+                        />
+                    </div>
+
+
+                    <div>
+                        <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                            Add Consumable
+                        </label>
+                        <input
+                            className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            id="rpw"
+                            type="text"
+                            value={this.state.consumableName}
                             onChange={(e) => this.setState({consumableName: e.target.value})}
                         />
-                        <button onClick={() => this.submitNewConsumable()}>Add consumable</button>
+
+
+                        <button
+                            className="bg-white text-gray-800 rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center"
+                            onClick={() => this.submitNewConsumable()} >
+                            <span className="text-sm">Add</span>
+                        </button>
                     </div>
                 </div>
                 <div className="list-feed-container">

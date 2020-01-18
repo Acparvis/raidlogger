@@ -24,23 +24,31 @@ class MonthShopping extends Component {
     }
 
     render() {
-        const { month } = this.props;
+        const { month, styling } = this.props;
 
         return (
-            <div className="shopping-month">
-                {/*<h3 style={{textAlign: "left"}}>{month} month</h3>*/}
-                <List >
-                    <ListSubheader>
-                        <h3 style={{ textAlign: "left"}}>{month} month</h3>
-                    </ListSubheader>
-                    {this.getMonthlyList().map((item) => {
-                        return (
-                            <ListItem>
-                                {item.name} x {item.number}
-                            </ListItem>
-                        )
-                    })}
-                </List>
+            <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pr-2">
+                <div className={`${styling} border rounded shadow p-2`}>
+                    <div className="flex flex-row items-center">
+                        <div className="flex-shrink pl-1 pr-4"><i
+                            className="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
+                        <div className="flex-1 text-right">
+                            <h5 className="text-white text-3xl">Month {month}</h5>
+
+
+                                {this.getMonthlyList().map((item) => {
+                                                    return (
+
+                                                        <h3 className="text-white">{item.name} x {item.number}<span className="text-green-400"><i
+                                                            className="fas fa-caret-down"></i></span></h3>
+
+
+                                                    )
+                                                })}
+
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
