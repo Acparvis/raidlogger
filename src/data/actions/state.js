@@ -25,3 +25,10 @@ export const changeRaids = (value) => ({
     type: CHANGE_RAIDS,
     value
 });
+
+export const ACTIVATE_TEMPLATE = Symbol("ACTIVATE_TEMPLATE");
+
+export const activateTemplate = (index) => ({
+    type: ACTIVATE_TEMPLATE,
+    index
+});

@@ -57,7 +57,7 @@ class ConsumableList extends Component {
                     </div>
                 </div>
                 <div className="list-feed-container">
-                    {consumables.map((consumable, index) => <Consumable key={index + consumable.id} data={consumable}
+                    {consumables.map((consumable, index) => <Consumable key={index + consumable?.id} data={consumable}
                                                                         index={index}/>)}
                 </div>
             </>

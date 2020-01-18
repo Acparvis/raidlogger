@@ -28,7 +28,7 @@ class Consumable extends Component {
         const {data, index} = this.props;
 
 
-        const {numberPerRaid, expectedPrice, currentStock, id} = this.props.data;
+        const {numberPerRaid, expectedPrice, currentStock, id} = this.props?.data;
 
         return (
             <Card varaint="outlined" style={{maxWidth: 345, margin: "15px", width: "100%"}}>

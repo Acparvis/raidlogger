@@ -3,7 +3,8 @@ import { //Imports the actions to be fed into the reducer switch statement.
     UPDATE_CONSUMABLE,
     ADD_CONSUMABLE,
     DELETE_CONSUMABLE,
-    CHANGE_RAIDS
+    CHANGE_RAIDS,
+    ACTIVATE_TEMPLATE
 } from "./actions/state";
 
 
@@ -65,6 +66,17 @@ const changeRaids = (state, {value}) => {
     }
 }
 
+const activateTemplate = (state, {index}) => {
+    const template = state.templates[index];
+
+    return {
+        ...state,
+        consumables : [
+            ...template.consumables
+        ]
+    }
+}
+
 // Reducer switch statement.
 export default(state = initial, action) => {
     switch (action.type) {
@@ -76,6 +88,8 @@ export default(state = initial, action) => {
             return deleteConsumable(state, action);
         case CHANGE_RAIDS:
             return changeRaids(state, action);
+        case ACTIVATE_TEMPLATE:
+            return activateTemplate(state, action);
         default:
             return state;
     }
